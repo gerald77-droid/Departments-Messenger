@@ -1,0 +1,13 @@
+{%load static%}
+{%block content %}
+<div>
+    <form method="POST" action=""{% url 'signin' %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        
+        <input type="submit" value="Register" />
+    </form>
+    <p>Already signed up yet?</p>
+    <a href="{% url 'signin' %}">Signin</a>
+</div>
+{% endblock %}

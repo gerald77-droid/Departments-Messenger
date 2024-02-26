@@ -1,0 +1,37 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>All departments</title>
+	<link rel="stylesheet" href="{% static './src/output.css' %}">
+	
+</head>
+{%block content %}
+<body>
+	<div>
+        <form action="" method="GET" class="rounded-2xl bg-gradient-r from-green-200 via-blue-300 to-purple-400">
+          <label>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+              <title>search</title>
+              <path
+                d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z">
+              </path>
+            </svg>
+            <input name="q" placeholder="Search for departments" />
+          </label>
+        </form>
+		{% for department in departments %}
+	<div class="bg-gradient-to-r from-slate-500 to-gray-700">
+		<a href="{% url 'department-details' pk=department.pk %}" class="text-white text-2xl font-mono">{{department.name}}</a>
+		<p class="font-semibold bg-rose-400">Department leader:{{department.dept_leader.username}}<p/>
+		<p class="bg-emerald-400">{{department.role.name}}</p>
+		<p class="bg-amber-500">{{department.description}}</p
+		<p>{{department.created_at|timesince}} ago</p
+		<p>{{department.updated_at}}</p
+{% endfor %}
+	
+</body>
+</html>
+{% endblock %}

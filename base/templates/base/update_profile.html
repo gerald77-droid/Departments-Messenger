@@ -1,0 +1,51 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Edit profile</title>
+	<link rel="stylesheet" href="{% static './src/output.css' %}">
+</head>
+<body class="bg-gradient-to-r from-gray-300 via-slate-400 to-slate-700">
+	<div>
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+			<title>arrow-left</title>
+			<path
+			  d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z">
+			</path>
+		</svg>
+	</div>
+	<div>
+		
+
+{% block content %}
+    <div>
+        <h2 class="text-emerald-600">Update Profile</h2>
+        <form method="POST" enctype="multipart/form-data" action="{% url 'update-profile' %}" class="rounded-2xl m-12 p-12">
+            {% csrf_token %}
+            <div class="mb-4 rounded-2xl">
+                <label class="font-semibold" for="{{form.name.id_for_label}}">Name:</label>
+                {{form.name}}
+            </div>
+            <div class="text-black rounded-2xl m-2 p-2">
+                <label class="font-semibold" for="{{form.bio.id_for_label}}">Bio:</label>
+                {{form.bio}}
+            </div>
+            <div class="">
+                {{ form.profile_picture }}
+                {% if form.profile_picture.value %}
+                    <img src="{{ form.profile_picture.url }}" alt="Profile Picture" class="max-lg:">
+                {% else %}
+                    <img src="{% static 'Images/avatar.svg' %}" alt="default avatar">
+                {% endif %}
+                {{ form.profile_picture.errors }}
+            </div>
+
+            <button class="hover:bg-purple-900 p-3 rounded-xl bg-gradient-to-r from-green-300 via-blue-600 to-purple-500" type="submit">Update Profile</button>
+        </form>
+    </div>
+{% endblock %}
+
+</body>
+</html>

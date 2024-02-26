@@ -1,0 +1,35 @@
+{%load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gerald Inco</title>
+	<link rel="stylesheet" href="{% static './src/output.css' %}">
+</head>
+
+	<div class="bg-teal-700 text-black font-thin m-3 p-3 flex flex-col justify-start">
+		{% if request.user.is_authenticated and user_is_staff %}
+		<form action="" method="POST" class="bg-gradient-r from-green-300 via-blue-300 to-purple-400">
+			{%csrf_token %}
+			<label for="dept_leader">Department Leader:</label>
+			<select name="dept_leader"required>
+				{% for admin_user in admin_users %}
+					<option value="{{admin_user.id}}">{{admin_user.username}}</option>
+				{% endfor %}
+			<select/><br>		
+			<label for="Role">Role:</label>
+			<select name="role" required>
+				{% for role in roles %}
+					<option value="{{role.id}}">{{role.name}}</option>
+				{%endfor %}
+			</select><br>	
+			
+			<textarea name="description" name="name" placeholder="department description" required ></textarea>
+			<input type="submit" class="hover:bg-purple-800 rounded-3xl block p-3 bg-gray-800" value="create department"> 
+		</form>
+		{% endif %}
+		
+{% endblock %}

@@ -1,0 +1,25 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Message Details</title>
+	<link rel="stylesheet" href="{% static './src/output.css' %}">
+</head>
+{% block content %}
+<body>
+	<h3>All Messages </h3>
+	<div>
+		{% for message in user_messages %}
+		<div class="rounded-2xl p-2 bg-gradient-to-r from bg-rose-300 to-red-300 m-3">
+			<strong class="block text-white">@{{request.user}}</strong>
+			<strong class="block bg-emerald-600 rounded-2xl p-3 text-white">{{message.Title}}</strong>
+			<strong class=" block text-white">{{message.content}}</strong>
+			<strong class="block text-white">{{message.created_at|timesince}} ago</strong>
+		</div>
+		{% endfor %}
+	</div>
+</body>
+{% endblock %}

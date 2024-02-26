@@ -1,0 +1,63 @@
+# created by virtualenv automatically
+/node_modules/
+# .gitignore for Django Projects
+
+# Virtual environment
+env/
+
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Local development settings
+*.env
+
+# Database
+db.sqlite3
+
+# Media files (uploaded by users)
+media/
+
+# Static files (collected using 'collectstatic')
+staticfiles/
+
+# Temporary files
+*.log
+*.swp
+
+# Visual Studio Code settings
+.vscode/
+
+# macOS metadata
+.DS_Store
+
+# Byte-compiled Python files
+*.pyc
+
+# PyCharm settings
+.idea/
+*.iml
+*.iws
+*.ipr
+*.iws
+
+# Jupyter Notebook settings
+.ipynb_checkpoints/
+
+# Pipenv environment
+Pipfile.lock
+
+# Django Debug Toolbar state
+__pycache__/
+debug_toolbar/
+
+# Ignore secrets file
+secrets.json
+
+# Ignore local configuration files
+local_settings.py
+# Tailwind CSS generated files
+*.css
+*.css.map
+Desktop/
+

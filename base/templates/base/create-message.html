@@ -1,0 +1,33 @@
+{% load static%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Message</title>
+	<link rel="stylesheet" href="{% static './src/output.css' %}">
+</head>
+</head>
+<body>
+	<div class="flex flex-col p-4 m-4 bg-gradient-to-r rounded-2xl bg-opacity-25 from-emerald-600 via-teal-600 to-purple-600">
+		<form method="POST" action="{% url 'message-details' pk=request.user.id %}" class="m-2 p-2 block ">
+			{%csrf_token%}
+			<label for="title">Title:</label>
+			<input class="rounded-2xl p-3 bg-gray-400"type="text" name="title"  required/>
+			<label for="department">Department</label>
+			<select class="rounded-2xl p-3 bg-gray-400"name="department" required>
+				{% for department in user_departments%}
+				<option value={{department.id}}>{{department.name}}</option>
+				{% endfor %}
+			</select>
+			<label for="title">Content:</label>
+			<input class="rounded-2xl p-3 bg-gray-400" type="text" name="content"  required/>
+			<button class="bg-gray-700 p-4 hover:bg-purple-700 rounded-2xl"value="Create Message">Create Message</button>	
+			
+		</form>
+	</div>
+	
+</body>
+</html>
+{% endblock%}

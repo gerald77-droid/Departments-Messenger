@@ -1,0 +1,56 @@
+{%load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gerald Inco</title>
+	<link rel="stylesheet" href="{% static './src/output.css' %}">
+</head>
+<body>
+	<div class="bg-gray-800 text-white">
+		<h1 class="font-mono text-4xl">Department <span class=" font-semibold"></span>Details</h1>
+
+		<h3 class="text-3xl font-serif p-3">Department:{{department.name}}</h3>
+		<h3>Leader: {{department.dept_leader.username}}</h3>
+		<h3>Role:{{department.role.name}}</h3>
+
+
+	</div>
+
+
+
+	
+	<div class="bg-black text-white m-4 rounded-2xl">
+		<h2 class="font-mono text-2xl">Messages</h2>
+		{% for message in department_messages %}
+		<div class="bg-gradient-to-r from-slate-400 to-gray-900 rounded-2xl flex flex-col m-4 p-4 w-1/2 ml-auto">
+			<p ><strong>@{{ request.user }}:</strong> </p>
+				<p >{{ message.Title }}</p>
+				<p >{{ message.content }}</p>
+			<p class="bg-gradient-to-r from-green-400 via-blue-600 to-purple-900 p-3 rounded-xl">{{ message.created_at|timesince }} ago</p>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="flex md:flex-col w-full h-full">
+		{% if request.user.is_authenticated %}
+
+		<form method="POST" action="" >
+			{% csrf_token%}
+			<label for="Title">Title</label>
+			<input class="rounded-2xl p-3 bg-slate-500" type="message" name="Title" required>
+			<label for="content">Content</label>
+			<input type="text" class="rounded-2xl m-4 p-3 bg-slate-500" name="content"  required/>
+			<button class="bg-gray-900 hover:bg-blue-700 rounded-2xl p-4"value="Create Message">Create Message</button>
+		</form>
+	</div>
+		{%else%}
+		<p class="text-orange-600">You are not allowed to access this page</p>
+		{% endif %}
+	</div>
+</body>  
+</html>
+
+{% endblock %}	
