@@ -9,8 +9,8 @@ This application represents a fully-fledged solution developed using the Django 
 
 # Getting started
 
-git clone https://github.com/gerald77-droid/Departments-Messenger
-git checkout start
+-git clone https://github.com/gerald77-droid/Departments-Messenger
+-git checkout start
 
 
 
