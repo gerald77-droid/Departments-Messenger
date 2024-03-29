@@ -1,6 +1,6 @@
 # Departments-Messenger
 
-This application represents a fully-fledged solution developed using the Django Framework and Tailwind CSS. It encompasses all aspects of the development process, from authentication to data storage, leveraging the robust capabilities of Django's built-in authentication system.
+This  is an end-to-end application  developed using the Django Framework and Tailwind CSS. It encompasses all aspects of the development process, from authentication to data storage, leveraging the robust capabilities of Django's built-in authentication system.
 
 ## Required Software
 - [Python 3.10](https://www.python.org/downloads/) or newer
