@@ -7,6 +7,9 @@ This application represents a fully-fledged solution developed using the Django 
 - [Node.js 18.15 LTS](https://nodejs.org/) or newer (For Tailwind.CSS)
 - [Git](https://git-scm.com/)
 
+#Getting started
+
+git clone https://github.com/gerald77-droid/Departments-Messenger
 
 
 
